@@ -1,0 +1,40 @@
+.bg-light {
+    background-color: #eff1f5 !important;
+}
+
+.footer {
+    font-size: 14px;
+    background: #ffffff !important;
+    a {
+        text-decoration: none;
+        color: rgba(44, 56, 74, 0.95);
+    }
+}
+
+html:not([dir=rtl]) .ms-auto {
+    margin: auto !important;
+}
+
+// Main Card Start
+.main_card {
+    padding: 20px;
+    .heading {
+        h6 {
+            font-size: 15px;
+            margin-bottom: 15px;
+            span {
+                color: #cc3333;
+            }
+        }
+    }
+}
+.div_wrap {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background: #ffffff;
+    &:last-child {
+        margin-bottom: 0px;
+    }
+}
+// Main Card End

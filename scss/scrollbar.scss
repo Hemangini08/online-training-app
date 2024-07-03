@@ -1,0 +1,30 @@
+// Scroll Start
+
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #444 transparent;
+  }
+}
+
+::-webkit-scrollbar {
+  width: .9em;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cui-body-bg, white);
+  border-radius: 100vw;
+  margin-block: .2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border: 5px solid var(--cui-body-bg, white);
+  border-radius: 100vw;
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background: #444;
+}
+
+// Scroll End

@@ -1,0 +1,34 @@
+<div style="justify-content: center;">
+ <br>
+ <br>
+ <kendo-label style="margin-left: 25%;"> Find Enrollments: </kendo-label>
+
+ <kendo-dropdownlist style="width: 20%;"
+  [data]="subcourseForEnrollments"
+  textField="subCourseName"
+  valueField="subCourseId"
+  (valueChange)="onGridFilterChange($event)">
+</kendo-dropdownlist>
+<div *ngIf="gridvisible">
+    <br>
+    <kendo-grid
+    [data]="gridData"
+    [navigable]="true"
+    (dataStateChange)="onStateChange($event)"
+    (remove)="removeHandler($event)"
+    >
+
+    <kendo-grid-command-column title="Delete" media="(min-width: 680px)" [width]="40">
+    <ng-template kendoGridCellTemplate let-isNew="isNew">
+        <button kendoGridRemoveCommand style="background-color: #971010; border: 2px solid #971010;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    </ng-template>
+    </kendo-grid-command-column>
+
+    <kendo-grid-column field="enrollmentId" [width]="80" title="Enrollment ID"></kendo-grid-column>
+    <kendo-grid-column field="empId" [width]="80" title="Emp ID"></kendo-grid-column>
+    <kendo-grid-column field="firstName" [width]="100" title="First Name"></kendo-grid-column>
+
+    <kendo-grid-column field="lastName" [width]="100" title="Last Name"></kendo-grid-column>
+</kendo-grid>
+</div>
+</div>

@@ -1,0 +1,74 @@
+<!--<c-header class="mb-4 d-print-none" position="sticky">-->
+
+<!-- <kendo-dropdownlist [data]="MerchantList" style="width:100%" [textField]="'MerchantName'"
+            [valueField]="'MerchantId'" [valuePrimitive]="true" [(ngModel)]="selectedValue" (valueChange)="HandleMerchantChange($event)"
+            placeholder="Select Merchant" (filterChange)="HandleMerchantFilter($event)" [filterable]="true">
+  </kendo-dropdownlist>
+  <h6>{{this.MerchantName}}</h6>
+    <h6>{{this.MerchantAddress}}</h6> -->
+    <ng-container>
+      <c-container [fluid]="true" class="">
+        <div class="header_left_contrain d-flex">
+          <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-1">
+            <!-- 2C384AF2 -->
+            <svg cIcon name="cilMenu" size="lg"></svg>
+          </button>
+          <div class="ms-2">
+            <h3>{{ headerTitle }}</h3>
+             <!--<h4 class="merchantheding">{{this.MerchantName}}</h4>
+            <p class="mb-0">{{this.MerchantAddress}}</p>-->
+          </div>
+        </div>
+        <div class="header_right_contrain d-flex align-items-center">
+    
+         <!-- <kendo-dropdownlist [data]="MerchantList" class="headerdropdown" [textField]="'MerchantName'"
+            [valueField]="'MerchantId'" [valuePrimitive]="true" [(ngModel)]="selectedValue"
+            (valueChange)="HandleMerchantChange($event)" placeholder="Select Merchant"
+            (filterChange)="HandleMerchantFilter($event)" [filterable]="true">
+          </kendo-dropdownlist> -->
+        
+        <!-- <c-header-nav class="d-none d-lg-flex me-auto">
+         <c-nav-item>
+            <a cNavLink routerLink="/dashboard" routerLinkActive="active">
+              Dashboard
+            </a>
+          </c-nav-item>
+          <c-nav-item>
+            <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
+          </c-nav-item>
+          <c-nav-item>
+            <a cNavLink routerLink="/settings" routerLinkActive="active">
+              Settings
+            </a>
+          </c-nav-item> 
+        </c-header-nav> -->
+    
+        <!-- <c-header-nav class="d-none d-lg-flex"> -->
+    
+        <!-- </c-header-nav> -->
+        <c-header-nav class="ms-3">
+          <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+        </c-header-nav>
+      </div>
+    
+      </c-container>
+    
+    </ng-container>
+    
+    <ng-template #userDropdown>
+      <c-dropdown alignment="end" variant="nav-item">
+        <button cButton color="" [caret]="false" cDropdownToggle class="py-0">
+          <c-avatar cTextColor="primary" shape="rounded-1" size="md" src="{{this.MerchantLogo}}"> <!-- status="success" -->
+          </c-avatar>
+        </button>
+        <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+          <li (click)="Logout()">
+            <a cDropdownItem>
+              <svg cIcon class="me-2" name="cilLockLocked"></svg>
+              Sign Out
+            </a>
+          </li>
+          <li></li>
+        </ul>
+      </c-dropdown>
+    </ng-template>

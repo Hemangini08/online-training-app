@@ -1,0 +1,120 @@
+<div style=" background-color: #4dc6f466;">
+    <div class="container">
+        <form  class="example-wrap" [formGroup]="createQuizForm">
+            <div class= "kendo-numerictextbox">
+                <kendo-label>No of Questions : </kendo-label>&nbsp;
+                <kendo-numerictextbox format="##" formControlName="totalQuestions" style="width: 30%;" [min]="0" [value]="noOfQuestions" (valueChange)="updateNoOfQuestions($event)">
+                </kendo-numerictextbox>
+            </div>
+            <br>
+            <div class="form-content">
+                <div formArrayName="questions">
+                    <div *ngFor="let q of questions.controls; let i = index" [formGroupName]="i">
+                
+                        <kendo-label>Question {{i+1}} : &nbsp;</kendo-label>
+                        <kendo-textarea
+                            formControlName="question"
+                            [style.width.percentage]="50"
+                            [rows]="2"
+                            style="width: 72%;"
+                            resizable="none"
+                            placeholder="Question..."
+                        ></kendo-textarea>
+                        <br>
+                        <br>
+                        <kendo-label>option A : &nbsp;</kendo-label>
+                        <kendo-textarea
+                            formControlName="optA"
+                            [style.width.percentage]="50"
+                            [rows]="2"
+                            style="width: 75%;"
+                            resizable="none"
+                            placeholder="option A..."
+                        ></kendo-textarea>
+                        <br>
+                        <kendo-label>option B : &nbsp;</kendo-label>
+                        <kendo-textarea
+                            formControlName="optB"
+                            [style.width.percentage]="50"
+                            [rows]="2"
+                            style="width: 75%;"
+                            resizable="none"
+                            placeholder="option B..."
+                        ></kendo-textarea>
+                        <br>
+                        <kendo-label>option C : &nbsp;</kendo-label>
+                        <kendo-textarea
+                            formControlName="optC"
+                            [style.width.percentage]="50"
+                            [rows]="2"
+                            style="width: 75%;"
+                            resizable="none"
+                            placeholder="option C..."
+                        ></kendo-textarea>
+                        <br>
+                        <kendo-label>option D : &nbsp;</kendo-label>
+                        <kendo-textarea
+                            formControlName="optD"
+                            [style.width.percentage]="50"
+                            [rows]="2"
+                            style="width: 75%;"
+                            resizable="none"
+                            placeholder="option D..."
+                        ></kendo-textarea>
+                        <br>
+                        <br>
+                        <kendo-label >Correct Option : &nbsp;</kendo-label>
+                        <kendo-label text="A ">&nbsp;</kendo-label>
+                        <input
+                            type="radio"
+                            [attr.name]="'correctOpt_' + i"
+                            value="A"
+                            style=" border: 1px solid black"
+                            formControlName="correctOpt"
+                            kendoRadioButton
+                        />
+                        &nbsp;
+                        <kendo-label text="B ">&nbsp;</kendo-label>
+                        <input
+                            type="radio"
+                            [attr.name]="'correctOpt_' + i"
+                            value="B"
+                            style=" border: 1px solid black"
+                            formControlName="correctOpt"
+                            kendoRadioButton
+                        />
+                        &nbsp;
+                        <kendo-label text="C ">&nbsp;</kendo-label>
+                        <input
+                            type="radio"
+                            [attr.name]="'correctOpt_' + i"
+                            value="C"
+                            style=" border: 1px solid black"
+                            formControlName="correctOpt"
+                            kendoRadioButton
+                        />
+                        &nbsp;
+                        <kendo-label text="D">&nbsp;</kendo-label>
+                        <input
+                            type="radio"
+                            [attr.name]="'correctOpt_' + i"
+                            value="D"
+                            style=" border: 1px solid black"
+                            formControlName="correctOpt"
+                            kendoRadioButton
+                        /> 
+                        <HR>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <kendo-button [primary]="true" style="margin-right: 10px;" (click)="submitForm()">Submit</kendo-button>
+                <button kendoButton (click)="clearForm()">Clear</button>
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+  

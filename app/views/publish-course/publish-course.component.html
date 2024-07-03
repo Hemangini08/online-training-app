@@ -1,0 +1,25 @@
+<div>  
+    <kendo-stepper
+    [steps]="steps"
+    stepType="full"
+    [(currentStep)]="current"
+    [linear]="true"
+    [style.width.%]="100"
+    >
+  </kendo-stepper>
+    </div>
+  <div class="tabs">
+        <div *ngIf="this.current == 0">
+            <app-course></app-course>
+        </div>
+        <div  *ngIf="this.current == 1">
+            <app-attachment></app-attachment>
+        </div>
+        <div  *ngIf="this.current == 2">
+            <app-create-quiz></app-create-quiz>
+        </div>
+</div>
+
+
+
+

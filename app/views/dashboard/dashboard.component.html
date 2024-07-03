@@ -1,0 +1,58 @@
+<div style=" background-color: #4dc6f466;">
+
+  <div style="margin-left : 25%">
+    <kendo-label>Enrollment Count Filter : </kendo-label>
+        <kendo-multiselect style="width :30%;"
+          [checkboxes]="true"
+          [autoClose]="false"
+          [data]="barFilterName"
+          textField="subCourseName"
+          valueField="subCourseId"
+          (valueChange)="onBarFilterChange($event)"
+        ></kendo-multiselect>
+      
+    </div>
+    <kendo-card style=" background-color: #4dc6f466;" style="flex: 1; justify-content: center; width: 100%;" orientation="horizontal">
+    
+        <kendo-chart style="background-color: #4dc6f466;" title="Enrollment Count" renderAs="canvas" [pannable]="true" [zoomable]="true" [categoryAxis]="categoryAxis" [valueAxis]="valueAxis" >
+            <kendo-chart-series>
+              <kendo-chart-series-item [data]="barEnrollmentCount" field="enrollmentCount" categoryField="subCourseName" >
+              </kendo-chart-series-item>
+            </kendo-chart-series>
+          </kendo-chart>
+    </kendo-card>
+
+
+<kendo-grid
+[data]="courseDB"
+[height]="550"
+[navigable]="true"
+
+(dataStateChange)="onStateChange($event)"
+(edit)="editHandler($event)"
+(cancel)="cancelHandler($event)"
+(save)="saveHandler($event)"
+(remove)="removeHandler($event)"
+>
+
+<kendo-grid-command-column title="Action" media="(min-width: 680px)" [width]="80">
+ <ng-template kendoGridCellTemplate let-isNew="isNew">
+    <button kendoGridEditCommand [primary]="true"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+    <button kendoGridRemoveCommand style="background-color : #971010; border: 2px solid #971010;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    <button kendoGridSaveCommand> {{ isNew ? 'Add' : 'Update' }}</button>
+    <button kendoGridCancelCommand> {{ isNew? 'Discard changes' : 'Cancel' }}</button>
+  </ng-template>
+</kendo-grid-command-column>
+
+<kendo-grid-column field="courseId" title="Course ID" [width]="100"></kendo-grid-column>
+<kendo-grid-column
+  field="courseName"
+  [width]="200"
+  title="Course Name"
+></kendo-grid-column>
+<kendo-grid-column field="courseDescription" title="Description" [width]="200"> </kendo-grid-column>
+    <div *kendoGridDetailTemplate="let courseId">
+        <app-subcourse-grid  [courseId]=courseId></app-subcourse-grid>
+    </div>
+</kendo-grid>
+</div>

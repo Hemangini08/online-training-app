@@ -1,0 +1,53 @@
+<section class="login">
+    <div class="login_wrap">
+        <div class="details_wrap">
+            <form [formGroup]="MerchantLoginForm" autocomplete="off" novalidate>
+                <img src="../../../assets/images/logo.png" alt="logo.png">
+                <div class="login_card">
+                    <h4> CLIENT PORTAL | LOGIN </h4>
+                    <div class="login_details">
+                        <div class="login_text_details">
+                            <div class="login_textbox">
+                                <img src="../../../assets/images/icons/user.png" alt="user.png">
+                                <kendo-textbox placeholder="Merchant I’d" formControlName="MerchantId"></kendo-textbox>
+                                <!-- <kendo-numerictextbox 
+                                            class="width_kendo" id="MerchantId" [format]="'##'" [spinners]="false" formControlName="MerchantId" 
+                                            placeholder="Merchant I’d" [min]="0" [maxlength]="8">
+                                </kendo-numerictextbox> -->
+                            </div>
+                            <p class="text-danger" style="text-align: left;"
+                            *ngIf="f['MerchantId'].invalid && (f['MerchantId'].dirty || f['MerchantId'].touched)">
+                            Please enter valid merchant Id.</p>
+                        </div>
+                        <div class="login_text_details">
+                            <div class="login_textbox">
+                                <img src="../../../assets/images/icons/password.png" alt="password.png">
+                                <!-- <kendo-textbox type="password" placeholder="Password" formControlName="Password"></kendo-textbox> -->
+                                <kendo-textbox #textbox type="password" placeholder="Password" formControlName="Password" 
+                                autocomplete="current-password" required></kendo-textbox>
+                            </div>
+                            <p class="text-danger" style="text-align: left;"
+                            *ngIf="f['Password'].invalid && (f['Password'].dirty || f['Password'].touched)">
+                            Please enter valid password.</p>
+                        </div>
+                    </div>
+                    <button type="button" (click)="MerchantLogin()"> Login </button>
+                    <label> Forgot password? </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Loader Start -->
+<ngx-spinner bdOpacity=0.9 size="default" color="#fff" 
+type="ball-spin-clockwise-fade" [fullScreen]="true" 
+template="<div class='container'>
+     <div class='loader-image'>
+         <img src='assets/images/output-onlinegiftools.gif' style='animation: glowing 2600ms infinite;' width='150px'>
+     </div>
+ </div>">
+    <p style="color: #4d1b12; text-align: center;"></p>
+</ngx-spinner>
+<!-- Loader End -->
+

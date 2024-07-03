@@ -1,0 +1,83 @@
+<div style=" background-color: #4dc6f466;">
+<div class="container" >
+  <form class="example-wrap" [formGroup]="courseDetailsForm">
+    
+    <kendo-label>Course Name : </kendo-label>
+    <kendo-multicolumncombobox
+    formControlName="courseName"
+    [popupSettings]="{ width: '10%' }"
+    [valuePrimitive]="true"
+    placeholder="Select Course"
+
+    style="width:50%;"
+    [data]="courseData"
+    [filterable]="true"
+    textField="courseName"
+    valueField="courseId"
+    (filterChange)="handleFilter($event)"
+    (valueChange)="fetchSelectedValue($event)"
+    >
+    <kendo-combobox-column field="courseId" title="Course Id" [width]="50"  class="k-text-center">
+    </kendo-combobox-column>
+    <kendo-combobox-column field="courseName" title="Course Name" [width]="100"  class="k-text-center">
+    </kendo-combobox-column>
+    
+    <ng-template kendoDropDownListNoDataTemplate>
+      <div>
+        No course found.
+        <ng-container *ngIf="filter">
+            Do you want to add new course - "{{ filter }}" ?
+        </ng-container>
+        <br />
+        <button *ngIf="filter" kendoButton (click)="addNew()">
+          Add new course
+        </button>
+      </div>
+    </ng-template>
+  </kendo-multicolumncombobox>
+    <ng-container *ngIf="newCourse">
+        <br>
+        <kendo-label>Course Description : </kendo-label>
+            <kendo-textarea
+            [style.width.percentage]="50"
+            [rows]="3"
+            style="width:50%;"
+            resizable="none"
+            formControlName="courseDescription"
+          >
+          </kendo-textarea>
+    </ng-container>
+    <br>
+    <kendo-label>SubCourse Name : </kendo-label>
+    <kendo-textbox
+    formControlName="subCourseName"
+    style="width:50%;"
+    placeholder="SubCourse Name..."
+    >
+  </kendo-textbox>
+  <br>
+    <kendo-label>SubCourse Description : </kendo-label>
+        <kendo-textarea
+        [style.width.percentage]="50"
+        [rows]="3"
+        style="width:50%;"
+        resizable="none"
+        formControlName="subCourseDescription"
+      >
+      </kendo-textarea>
+  <br>
+  <kendo-label>SubCourse Type : </kendo-label>
+  <kendo-textbox
+  formControlName="subCourseType"
+  style="width:50%;"
+  placeholder="SubCourse Type..."
+  >
+  </kendo-textbox>
+  <br>
+  <div>
+    <kendo-button [primary]="true" style="margin-right: 10px;" (click)="submitForm()">Submit</kendo-button>
+    <button kendoButton (click)="clearForm()">Clear</button>
+  </div>
+</form>
+</div>
+</div>

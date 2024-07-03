@@ -1,0 +1,105 @@
+/* Define theme colors */
+$primary-color: #1c497c;
+$secondary-color: #04aeef;
+$new-background-color: #f0f0f0; /* New background color */
+
+/* Apply general styles to the whole page */
+html, body {
+  height: 100%;
+  
+  margin: 0;
+  font-family: Arial, sans-serif; /* Choose a readable font */
+  background-color: $new-background-color; /* Apply new background color */
+}
+
+/* Center content vertically and horizontally */
+.container {
+  height: 100vh; /* Set the height to full viewport height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+
+}
+
+/* Styling for the main content wrapper */
+.example-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid $primary-color; /* Simplify border styling */
+  border-radius: 15px; /* Make corners smoother */
+  max-width: 600px;
+  width: 90%; /* Adjust width for better responsiveness */
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Updated box-shadow for a more noticeable effect */
+  background-color: #f9f9f9; /* Light background color */
+}
+
+
+/* Styling for Kendo labels */
+kendo-label {
+  font-weight: bold; /* Make labels bold */
+}
+
+/* Styling for form elements */
+kendo-multicolumncombobox, kendo-textbox, kendo-textarea {
+  width: 50%; /* Set width for form elements */
+}
+
+/* Styling for the buttons */
+.k-button {
+  margin-right: 10px; /* Add margin to the buttons */
+  border: 2px solid $primary-color; /* Add border to buttons */
+  background-color: $primary-color; /* Change background color of buttons */
+  color: #fff; /* Change text color of buttons */
+}
+
+.k-button.clear-button {
+  border-color: $secondary-color; /* Change border color of clear button */
+  background-color: $secondary-color; /* Change background color of clear button */
+}
+
+.k-button:hover {
+  background-color: darken($primary-color, 10%); /* Darken background color on hover */
+  border-color: darken($primary-color, 10%); /* Darken border color on hover */
+}
+
+.k-button.clear-button:hover {
+  background-color: darken($secondary-color, 10%); /* Darken background color on hover for clear button */
+  border-color: darken($secondary-color, 10%); /* Darken border color on hover for clear button */
+}
+
+/* Add media query for smaller screens if needed */
+@media screen and (max-width: 1000px) {
+  /* Adjust layout for smaller screens */
+  .example-wrap {
+    max-width: 90%; /* Adjust max-width for better fit */
+    border-radius: 10px; /* Smoother corners */
+  }
+
+  /* Make form elements full width on smaller screens */
+  kendo-multicolumncombobox, kendo-textbox, kendo-textarea {
+    width: 100%;
+  }
+}
+
+/* Add outline/border to Kendo UI inputs */
+
+/* Styling for Kendo Multicolumncombobox */
+kendo-multicolumncombobox {
+  border: 1px solid $primary-color; /* Add border to multicolumncombobox */
+  border-radius: 5px; /* Add border radius for a smoother look */
+}
+
+/* Styling for Kendo Textbox */
+kendo-textbox {
+  border: 1px solid $primary-color; /* Add border to textbox */
+  border-radius: 5px; /* Add border radius for a smoother look */
+}
+
+/* Styling for Kendo Textarea */
+kendo-textarea {
+  border: 1px solid $primary-color; /* Add border to textarea */
+  border-radius: 5px; /* Add border radius for a smoother look */
+}
+

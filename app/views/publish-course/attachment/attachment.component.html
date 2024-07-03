@@ -1,0 +1,53 @@
+<div style=" background-color: #4dc6f466;">
+  <div class="container">
+    <form  class="example-wrap" [formGroup]="AttachmentDetailsForm">
+      <div class="form-content" style="height : 2000px">
+        <div formArrayName="attachments" style="justify-content : center;">
+          <div class="form-content" style="display : grid;" *ngFor="let attachment of attachments.controls; let i = index" [formGroupName]="i"> 
+            <br>
+            <kendo-label>Attachment Name : </kendo-label>
+            <kendo-textbox formControlName="fileName" style="width:100%;"></kendo-textbox>
+            <br>
+            <kendo-label>Upload Attachment File : </kendo-label>
+            <kendo-upload
+            [autoUpload]="false"
+            formControlName="file"
+            [restrictions]="fileRestrictions"
+            (select)="onFileSelect($event, i)"
+            (remove)="onFileRemove(i)"
+            [multiple]="false"
+            >
+            <kendo-upload-messages [select]="'Select file'">  <kendo-upload-messages [dropFilesHere]="'Drop file here to upload'"> </kendo-upload-messages></kendo-upload-messages>
+            </kendo-upload>
+            <br>
+            <kendo-label>Description : </kendo-label>
+            <kendo-textarea
+            [style.width.percentage]="50"
+            [rows]="3"
+            style="width:100%;"
+            resizable="none"
+            formControlName="description"
+            placeholder="Description">
+            </kendo-textarea>
+            <br>
+            <kendo-label>Expected Duration to complete (in hours) : </kendo-label>
+            <kendo-numerictextbox style="width : 55%;" formControlName="timeToComplete" placeholder="Time to complete (hours)"></kendo-numerictextbox>
+            <br>
+            <kendo-button type="button" (click)="removeAttachment(i)">Remove</kendo-button>
+            <br>
+            <HR>
+          </div>
+        </div>
+      </div>
+      <br>
+      <kendo-button type="button" (click)="addAttachment()">Add Attachment</kendo-button>
+      <br>
+      <div class="k-form-buttons">
+        <kendo-button [primary]="true" style="margin-right: 10px;" (click)="submitForm()">Submit</kendo-button>
+        <button kendoButton (click)="clearForm()">Clear</button>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>
+  

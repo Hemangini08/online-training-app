@@ -1,0 +1,118 @@
+<section class="Transaction History">
+    <div class="main_card">
+        <!-- <div class="heading">
+            <h6> Home > <span> Transaction History </span> </h6>
+        </div> -->
+        <div class="main_body">
+            <div class="div_wrap">
+                <!-- Date Search Start -->
+                <form [formGroup]="TransactionForm" novalidate>
+                    <div class="date_search_wrap">
+                        <div class="date_details">
+                            <div class="date_wrap">
+                                <kendo-label text="Form Date"> </kendo-label>
+                                <kendo-datepicker
+                                    calendarType="classic"
+                                    formControlName="FromDate"
+                                    [format]="'dd-MMM-yyyy'"
+                                ></kendo-datepicker>
+                            </div>
+                            <div class="date_wrap">
+                                <kendo-label text="To Date"> </kendo-label>
+                                <kendo-datepicker
+                                    calendarType="classic"
+                                    formControlName="ToDate"
+                                    [format]="'dd-MMM-yyyy'"
+                                ></kendo-datepicker>
+                            </div>
+                            <div class="button_wrap">
+                                <button class="theam_button" (click)="SearchTransactionHistory()"> <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Date Search End -->
+            </div>
+
+            <div class="div_wrap">
+                <!-- Tabs Start -->
+                <div class="tabs_wrap">
+                    <button class="tab-button" [class.active]="activeTab === 1" (click)="toggleTab(1)"> Deals </button>
+                    <button class="tab-button" [class.active]="activeTab === 2" (click)="toggleTab(2)"> Bill Payment </button>
+                  </div>
+                  <div class="tabs_details">
+                    <!-- Deals Details Start -->
+                    <div class="deals_details" *ngIf="activeTab === 1">
+                        <div class="deals_grid">
+                            <kendo-grid
+                                [data]="TransactionDealsDetailsGridView"
+                                [sortable]="true"
+                                        [sort]="dealstate.sort" [pageable]="true" [skip]="dealstate.skip" [pageSize]="dealstate.take"
+                                        [filter]="dealstate.filter" [filterable]="true" width="100%"
+                                        (dataStateChange)="dataStateChange($event)">
+                                
+                                <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+                                    <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+                                    <kendo-pager-numeric-buttons [buttonCount]="buttonCount"></kendo-pager-numeric-buttons>
+                                    <kendo-pager-next-buttons></kendo-pager-next-buttons>
+                                    <kendo-pager-input></kendo-pager-input>
+                                    <kendo-pager-info></kendo-pager-info>
+                                    <kendo-pager-page-sizes [pageSizes]="sizes"></kendo-pager-page-sizes>
+                                </ng-template>
+
+                                <kendo-grid-column field="DealTitle" title="Deals Title"> </kendo-grid-column>
+                                <kendo-grid-column field="Mobile" title="Mobile No" [width]="130"> </kendo-grid-column>
+                                <kendo-grid-column field="TransactionDate" title="Transation Date" [width]="130"> </kendo-grid-column>
+                                <kendo-grid-column field="TransactionTime" title="Transation Time" [width]="130"> </kendo-grid-column>
+                                <kendo-grid-column field="TotalMrp" title="Total MRP" [width]="125"> </kendo-grid-column>
+                                <kendo-grid-column field="TotalPrice" title="Total Price" [width]="125"> </kendo-grid-column>
+                                <kendo-grid-column field="VoucherCode" title="Voucher Code" [width]="125"> </kendo-grid-column>
+                                <kendo-grid-column field="Rating" title="Rating" [width]="125"> </kendo-grid-column>
+                                <kendo-grid-column field="DealCommission" title="Commission %" [width]="150"> </kendo-grid-column>
+                                <kendo-grid-column field="CommissionAmount" title="Commission Amt" [width]="140"> </kendo-grid-column>
+                                <kendo-grid-column field="PaidAmount" title="Paid Amt" [width]="90"> </kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                    <!-- Deals Details End -->
+
+                    <!-- Billpayment Start -->
+                    <div class="billpayment_details" *ngIf="activeTab === 2">
+                        <div class="billpayment_grid">
+                            <kendo-grid
+                                [data]="TransactionBillDetailsGridView"
+                                [sortable]="true"
+                                [sort]="Billstate.sort" [pageable]="true" [skip]="Billstate.skip" [pageSize]="Billstate.take"
+                                [filter]="Billstate.filter" [filterable]="true" width="100%"
+                                (dataStateChange)="BillDataStateChange($event)">
+
+                                <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+                                    <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+                                    <kendo-pager-numeric-buttons [buttonCount]="buttonCount"></kendo-pager-numeric-buttons>
+                                    <kendo-pager-next-buttons></kendo-pager-next-buttons>
+                                    <kendo-pager-input></kendo-pager-input>
+                                    <kendo-pager-info></kendo-pager-info>
+                                    <kendo-pager-page-sizes [pageSizes]="sizes"></kendo-pager-page-sizes>
+                                </ng-template>
+
+                                <kendo-grid-column field="Mobile" title="Mobile No" [width]="110"> </kendo-grid-column>
+                                <kendo-grid-column field="TransactionDate" title="Transaction Date" [width]="120"> </kendo-grid-column>
+                                <kendo-grid-column field="TransactionTime" title="Transaction Time" [width]="120"> </kendo-grid-column>
+                                <kendo-grid-column field="BillAmount" title="Bill Amount" [width]="120"> </kendo-grid-column>
+                                <kendo-grid-column field="TotalPaidAmount" title="Final Amt" [width]="110"> </kendo-grid-column>
+                                <kendo-grid-column field="BillDiscountPercent" title="Discount %" [width]="120"> </kendo-grid-column>
+                                <kendo-grid-column field="Commission" title="Commission %" [width]="140"> </kendo-grid-column>
+                                <kendo-grid-column field="CommissionAmount" title="Commission Amt" [width]="130"> </kendo-grid-column>
+                                <kendo-grid-column field="VoucherCode" title="Voucher Code" [width]="115"> </kendo-grid-column>
+                                <kendo-grid-column field="CalPaidAmount" title="Paid Amt" [width]="110"> </kendo-grid-column>
+                                <kendo-grid-column field="IsRedeemed" title="Redeemed" [width]="120"> </kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+                    </div>
+                    <!-- billpayment End -->
+                  </div>
+                <!-- Tabs End -->
+            </div>
+        </div>
+    </div>
+</section>

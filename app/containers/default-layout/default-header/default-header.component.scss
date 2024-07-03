@@ -1,0 +1,28 @@
+.merchantheding {
+    color: #2C384AF2;
+    font-weight: 600;
+}
+
+.avatar-md {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+:host ::ng-deep {
+    .headerdropdown {
+        width: 100%;
+        height: 30px;
+        background: #fcebec;
+
+        .k-button-icon {
+            width: 20px;
+            height: 20px;
+            color: #cc3333;
+        }
+
+        .k-picker-solid {
+            background: #fcebec;
+        }
+
+    }
+}

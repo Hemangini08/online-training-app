@@ -1,0 +1,60 @@
+<ngx-spinner bdOpacity=0.9 size="default" color="#fff" 
+type="ball-spin-clockwise-fade" [fullScreen]="true" 
+template="<div class='container'>
+     <div class='loader-image'>
+         <img src='assets/images/output-onlinegiftools.gif' style='animation: glowing 2600ms infinite;' width='150px'>
+     </div>
+ </div>">
+    <p style="color: #4d1b12; text-align: center;"></p>
+</ngx-spinner>
+
+<!--sidebar-->
+<c-sidebar
+  #sidebar="cSidebar"
+  class="d-print-none sidebar sidebar-fixed"
+  id="sidebar"
+  visible
+  unfoldable="false"
+>
+  <c-sidebar-brand
+    [brandFull]="{
+      src: 'assets/images/logo.png',
+      width: 170,
+      height: 40,
+      alt: 'Elite Logo'
+    }"
+    [brandNarrow]="{
+      src: 'assets/favicon1.ico',
+      width: 46,
+      height: 35,
+      alt: 'Elite Logo'
+    }"
+    routerLink="./"
+  />
+
+  <ng-scrollbar pointerEventsMethod="scrollbar">
+    <c-sidebar-nav
+      [navItems]="navItems"
+      dropdownMode="close"
+    />
+  </ng-scrollbar>
+  <c-sidebar-toggler
+    *ngIf="!sidebar.narrow"
+    toggle="unfoldable"
+    cSidebarToggle="sidebar"
+  />
+</c-sidebar>
+
+<!--main-->
+<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+  <!--app-header-->
+  <app-default-header class="d-print-none header header-sticky" position="sticky" sidebarId="sidebar" />
+  <!--app-body-->
+  <div class="body flex-grow-1">
+    <!-- <c-container breakpoint="lg" class="h-auto"> -->
+      <router-outlet/>
+    <!-- </c-container> -->
+  </div>
+  <!--app footer-->
+  <app-default-footer/>
+</div>

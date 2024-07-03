@@ -1,0 +1,52 @@
+// Date Search Start
+.date_details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    .date_wrap {
+        max-width: 270px;
+        margin-right: 20px;
+    }
+}
+// Date Search End
+
+// Tabs Start
+.tabs_wrap {
+    button {
+        width: 160px;
+        font-weight: 600;
+        padding: 8px 0px;
+        color: #565656;
+        border: #ffffff;
+        background: #ffffff;
+        border-bottom: 2px solid #565656;
+        &.active {
+            color: #cc3333;
+            border: #fff4f4;
+            background: #fff4f4;
+            border-bottom: 2px solid #cc3333;
+        }
+        &:first-child {
+            border-top-left-radius: 10px;
+        }
+        &:last-child {
+            border-top-right-radius: 10px;
+        }
+    }
+}
+// Tabs End
+
+// Deals Details Start
+.deals_details,
+.billpayment_details {
+    padding: 15px 10px 10px;
+    .deals_grid,
+    .billpayment_grid {
+        overflow: auto;
+        .k-grid  {
+            width: 1450px;
+            max-height: calc(66vh - 50px);
+        }
+    }
+}
+// Deals Details End
